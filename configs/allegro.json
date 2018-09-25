@@ -1,0 +1,16 @@
+{
+	"CheckXpaths": {
+		"DetailLinkSelector": "//h2[contains(@class, '_4462670')]//a/@href",
+		"PhoneNameSelector": "//h2[contains(@class, '_4462670')]//a/text()"
+	},
+	"UrlResolveRules": {
+		"PageLinkTemplate": "https://allegro.pl/kategoria/smartfony-i-telefony-komorkowe-165?order=m&p={0}"
+	},
+	"SimpleFields": {
+		"ScreenDiag": "//div[contains(text(), 'Przekątna ekranu:')]/following::div[1]/text()",
+		"ScreenResolution": "//div[contains(text(), 'Rozdzielczość ekranu (px):')]/following::div[1]/text()",
+		"MainCamera": "//div[contains(text(), 'Rozdzielczość aparatu tylnego:')]/following::div[1]/text()",
+		"ProcessorCores": "//div[contains(text(), 'Liczba rdzeni procesora:')]/following::div[1]/text()",
+		"Price": "//div[@class='m-price m-price--primary']/following::div[1]/text()"
+	}
+}
