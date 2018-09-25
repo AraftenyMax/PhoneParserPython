@@ -7,7 +7,7 @@ def load_config_file(filename: str):
     path = os.path.join(base_path, 'configs/{}.json'.format(filename))
     try:
         with open(path) as config_data:
-            config = json.load(config_data, encoding='win1251')
+            config = json.load(config_data)
     except FileNotFoundError as e:
         print(e)
     else:

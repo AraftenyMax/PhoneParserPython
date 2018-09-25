@@ -4,8 +4,6 @@ from lxml import html
 from lxml import etree
 from lxml.etree import ParseError
 from datetime import datetime
-from lxml.etree import XPathSyntaxError
-
 from src.settings import *
 from src.utils import load_config_file, get_base_folder_path
 
@@ -41,6 +39,11 @@ class Parser:
         if extension in AVAILABLE_DUMPS:
             return AVAILABLE_DUMPS[extension]
         raise Exception('Couldn\'t find handler for this extension')
+
+    def start_parse(self):
+        self.config = load_config_file(self.config_name)
+        if self.verify_config():
+            self.parse()
 
     def verify_config(self):
         for section_key, fields in REQUIRED_SECTIONS.items():
@@ -79,8 +82,6 @@ class Parser:
             for field_name, xpath in self.config[SMFIELDS_SECTION_KEY].items():
                 try:
                     item_dict[field_name] = "".join([x for x in tree.xpath(xpath)]).replace(' ', '').replace('\n', '')
-                except XPathSyntaxError:
-                    print('Invalid xpath: ', xpath)
                 except Exception as e:
                     print(e)
         if item_dict:
