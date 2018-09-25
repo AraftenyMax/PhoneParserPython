@@ -1,7 +1,4 @@
 import os
-import json
-from types import FunctionType
-
 import requests
 from lxml import html
 from lxml import etree
