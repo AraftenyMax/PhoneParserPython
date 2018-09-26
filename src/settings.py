@@ -7,3 +7,4 @@ REQUIRED_SECTIONS = {
     'CheckXpaths': ['DetailLinkSelector', ]
 }
 AVAILABLE_DUMPS = {'json': dump_json, 'csv': dump_csv}
+SPEC_SYMBOLS = ['\n', '\t', '\r']

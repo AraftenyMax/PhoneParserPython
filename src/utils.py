@@ -1,5 +1,7 @@
 import os
+import csv
 import json
+from datetime import datetime
 
 
 def load_config_file(filename: str):
@@ -19,10 +21,15 @@ def get_base_folder_path():
 
 
 def dump_json(filename, data: dict):
-    with open(filename, 'a+') as outfile:
+    with open(filename, 'a+', newline='') as outfile:
         json.dump(data, outfile, ensure_ascii=False)
 
 
 def dump_csv(filename, data: dict):
-    with open(filename, 'a+') as outfile:
-        outfile.write(','.join(data.values()))
+    with open(filename, 'a+', newline='') as outfile:
+        datawriter = csv.DictWriter(outfile, fieldnames=data.keys())
+        datawriter.writerow(data)
+
+
+def get_datetime_now():
+    return datetime.now().strftime("%b %d %Y %H-%M-%S")
